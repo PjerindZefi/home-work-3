@@ -1,0 +1,6 @@
+import { helper } from '@ember/component/helper';
+
+export default helper(function getNumber(params) {
+
+    return params[0] > params[1];
+});

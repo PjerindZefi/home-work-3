@@ -1,0 +1,66 @@
+<div class="container">
+    <h2>Lets Split It</h2>
+
+    {{#if this.FriendsAddOn}}
+    Name: <input id="name" type="string" value={{PresentFriend}} oninput={{action changeFriend}} />
+    <button id="button" onclick={{action addToArrFriends}}>Add Friend</button>
+    {{else}}
+    <p>The maximum number of friends is 10. Please do another round. Thank you!</p>
+    {{/if}}
+
+    <p>Name of Friends:</p>
+    <ul>
+        {{#each ArrayFriends as |friend|}}
+        <li>{{friend}}</li>
+        {{/each}}
+    </ul>
+
+    {{#if this.spendingEventsAddOn}}
+    Event: <input id="event" type="string" value={{PresentSpendingEvent}} oninput={{action
+        changeSpendingEvent}} /> <br> <br>
+    Paid By: <input id="paidBy" type="string" value={{PresentPaidBy}} oninput={{action changePresentPaidBy}} /> <br>
+    <br>
+    How Much: $<input id="expense" type="number" value={{PresentExpense}} oninput={{action changePresentExpense}} /><br>
+    <br>
+    <button class="buttonAdd" id="button" onclick={{action addRowtoEventsTable}}>Add on</button>
+    {{else if this.spendingEventMoreThanTen}}
+    <p>You reach the limit 10 events.</p>
+    {{/if}}
+    <table>
+        <tr>
+            <th id="event">Event</th>
+            <th id="paidBy">Paid By</th>
+            <th id="expense">How Much</th>
+            <th></th>
+        </tr>
+        {{#each this.rows key="@index" as |row index|}}
+        <tr>
+            <td>{{row.spendingEvent}}</td>
+            <td>{{row.paidBy}}</td>
+            <td>${{row.expense}}</td>
+            <td><button type="button" id="button" onclick={{action removeRowFromEventsTable index}}>Delete</button></td>
+        </tr>
+        {{/each}}
+    </table>
+
+    
+    <br>
+    {{#each (cost-divider this.rows this.ArrayFriends) as |result|}}
+    {{result.name}}:
+    {{#if (number-of-friends result.owedMoney 0)}}
+    <div class="black">Does Not Owe Or It's Not Owed </div>
+    {{else}}
+    <div class={{if (get-number result.owedMoney 0) "green" "red" }}>
+        {{#each result.transaction as |transaction index|}}
+        {{#if (get-number transaction.credit 0)}}
+        is owed {{formation transaction.credit}} by {{transaction.id}}
+        {{else}}
+        owed {{transaction.id}} {{formation transaction.credit}}
+        {{/if}}
+        {{/each}}
+    </div>
+    {{/if}}
+    {{/each}}
+    <br>
+
+</div>

@@ -1,0 +1,70 @@
+* {
+    background-color: rgb(209, 222, 223);
+}
+
+h2 {
+    text-align: center;
+}
+
+#event {
+    margin-left: 3.3em;
+    background-color: rgb(214, 199, 181);
+}
+
+.buttonAdd {
+    margin-bottom: 1em;
+}
+
+#paidBy {
+    margin-left: 2.3em;
+    background-color: aqua;
+}
+
+#expense {
+    background-color: aquamarine;
+}
+
+#name {
+    background-color: beige;
+}
+
+#button {
+    background-color: plum;
+}
+
+.container {
+    margin: auto;
+    width: 60%;
+    border: 1em double black;
+    padding: 10px;
+    border-radius: 2em;
+    max-width: 28em;
+    min-width: 22em;
+    background-color: bisque;
+}
+
+li {
+    list-style-type: none;
+}
+
+table,
+th,
+td {
+    border: 3px solid rgb(66, 38, 38);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.black {
+    color: black;
+}
